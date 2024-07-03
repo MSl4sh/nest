@@ -22,7 +22,7 @@ export default function UserFavourites({ favourite }: { favourite: userFavorite 
                 <h3 className="font-bold text-lg">{cabin?.name}</h3>
             </div>
             <div >
-                <img src={cabin?.images[0]} alt={cabin?.name} className="rounded-lg w-full h-48 object-cover" />
+                <img src={`${process.env.PUBLIC_URL}${cabin?.images[0]}`} alt={cabin?.name} className="rounded-lg w-full h-48 object-cover" />
             </div>
         </div>
     )

@@ -31,7 +31,7 @@ const Carroussel = ({ images, currentIndex }: CarrousselProps) => {
 
 
         <div id="modal" className="carrousel-container">
-            <img src={images[index]} alt="" className="carrousel-image" />
+            <img src={`${process.env.PUBLIC_URL}${images[index]}`} alt="" className="carrousel-image" />
             <div className="carrousel-control left">
                 <button type="button" aria-label="Précédente" onClick={prevImg}>
                 <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M400 976 0 576l400-400 56 57-343 343 343 343-56 57Z" fill='#467971' /></svg>

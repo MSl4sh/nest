@@ -28,7 +28,7 @@ const Reserved = ({ data, user, reservation }:ReservedProps) => (
                 </div>
                 <p className='mb-4 font-bold'>Votre récapitulatif:</p>
                 <div className="flex mb-7">
-                    <img src={data && data.images && data.images[0]} alt="" className="h-28 rounded-lg" />
+                    <img src={data && data.images && `${process.env.PUBLIC_URL}${data.images[0]}`} alt="" className="h-28 rounded-lg" />
                     <div className="pl-3">
                         <h3 className="text-lg font-bold">{data.name}</h3>
                         <p>{data.region}</p>

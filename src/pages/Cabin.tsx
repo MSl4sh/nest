@@ -114,13 +114,13 @@ const CabinPage = () => {
                                 <button type='button' className='h-full max-[792px]:h-1/2 ' >
                                     <div className='flex w-full h-full  rounded-2xl overflow-hidden gap-3 '>
                                         {isLargeScreen?<>
-                                            <img src={data.images[0]} onClick={() => openImageModal(0)} alt="" className='w-1/2  max-[792px]:w-full   h-auto  object-cover' />
+                                            <img src={`${process.env.PUBLIC_URL}${data.images[0]}`} onClick={() => openImageModal(0)} alt="" className='w-1/2  max-[792px]:w-full   h-auto  object-cover' />
 
                                         <div className='w-1/2 max-[792px]:hidden flex justify-between gap-y-3 flex-wrap rounded-r-lg overflow-hidden'>
-                                            <img src={data.images[1]} onClick={() => openImageModal(1)} alt="" className='h-1/2 w-[48.5%] object-cover' />
-                                            <img src={data.images[2]} onClick={() => openImageModal(2)} alt="" className='h-1/2 w-[48.5%] object-cover' />
-                                            <img src={data.images[3]} onClick={() => openImageModal(3)} alt="" className='h-1/2 w-[48.5%] object-cover' />
-                                            <img src={data.images[4]} onClick={() => openImageModal(4)} alt="" className='h-1/2 w-[48.5%] object-cover' />
+                                            <img src={`${process.env.PUBLIC_URL}${data.images[1]}`} onClick={() => openImageModal(1)} alt="" className='h-1/2 w-[48.5%] object-cover' />
+                                            <img src={`${process.env.PUBLIC_URL}${data.images[2]}`} onClick={() => openImageModal(2)} alt="" className='h-1/2 w-[48.5%] object-cover' />
+                                            <img src={`${process.env.PUBLIC_URL}${data.images[3]}`} onClick={() => openImageModal(3)} alt="" className='h-1/2 w-[48.5%] object-cover' />
+                                            <img src={`${process.env.PUBLIC_URL}${data.images[4]}`} onClick={() => openImageModal(4)} alt="" className='h-1/2 w-[48.5%] object-cover' />
                                         </div></>:
                                         <Carroussel images={data.images} currentIndex={currentIndex} />
                                         }

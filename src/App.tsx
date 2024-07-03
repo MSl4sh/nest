@@ -26,22 +26,25 @@ function App() {
 
 
   useEffect(() => {
+    const publicUrl = process.env.PUBLIC_URL;
+    const dataUrl = `${publicUrl}/db/db.json`;
+
     if (!localStorage.getItem('myData')) {
-      fetch('/db/db.json')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(json => {
-          console.log("Fetched data: ", json);
-          localStorage.setItem('myData', JSON.stringify(json));
-          console.log("Data stored in localStorage: ", localStorage.getItem('myData'));
-        })
-        .catch(err => console.error("Erreur lors du chargement des données: ", err));
+        fetch(dataUrl)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((json) => {
+                console.log("Fetched data: ", json);
+                localStorage.setItem('myData', JSON.stringify(json));
+                console.log("Data stored in localStorage: ", localStorage.getItem('myData'));
+            })
+            .catch((err) => console.error("Erreur lors du chargement des données: ", err));
     }
-  }, []);
+}, []);
 
   useEffect(() => {
     const userInStorage = localStorage.getItem('currentUser');
@@ -63,7 +66,7 @@ function App() {
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Modal show={showModal} handleClose={handleCloseModal} />
         <Header toggleResponsiveNav={toggleResponsiveNav} setToggleResponsiveNav={setToggleResponsiveNav} />
         {toggleResponsiveNav && !isLargeScreen && <ResponsiveNav visible={toggleResponsiveNav} onClose={setToggleResponsiveNav} />}

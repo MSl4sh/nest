@@ -14,7 +14,7 @@ const CabinCard = ({ cabin, user}:CabinCardProps) => (
 
     <div className='card col-span-4 max-[900px]:col-span-4 max-[1100px]:col-span-4 overflow-hidden  hover:scale-105 duration-75 hover:cursor-pointer' >
         <NavLink to={`/cabin/${cabin.id}`}>
-            <img src={cabin.images[0]} alt="" className='h-80 w-full object-cover mb-4' />
+            <img src={`${process.env.PUBLIC_URL}${cabin.images[0]}`} alt="" className='h-80 w-full object-cover mb-4' />
             <div className='flex  justify-between p-4'>
                 <div>
                     <h2 className='text-xl font-bold'>{cabin.name}</h2>
