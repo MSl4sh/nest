@@ -11,7 +11,7 @@ const Reservation = () => {
     const { user, setUser } = useContext(AuthContext);
     const [data, setData] = useState<Cabin | undefined>();
     const [searchParams] = useSearchParams();
-    const today:Date = new Date();
+    const today: Date = new Date();
     const [minDate, setMinDate] = useState<string>(today.toISOString().slice(0, 10));
     const [newDateStart, setNewDateStart] = useState<string>('');
     const [newDateEnd, setNewDateEnd] = useState<string>('');
@@ -34,8 +34,8 @@ const Reservation = () => {
     )
 
     const urlCabinID: string = searchParams.get('id') ?? '';
-    const urlDateStart: string = searchParams.get('dateStart')??"";
-    const urlDateEnd : string= searchParams.get('dateEnd')??"";
+    const urlDateStart: string = searchParams.get('dateStart') ?? "";
+    const urlDateEnd: string = searchParams.get('dateEnd') ?? "";
 
 
 
@@ -43,7 +43,7 @@ const Reservation = () => {
 
     async function fetchData() {
 
-        const Data = JSON.parse(localStorage.getItem('myData') ?? '').cabins.find((cabin:Cabin) => cabin.id === parseInt(urlCabinID));
+        const Data = JSON.parse(localStorage.getItem('myData') ?? '').cabins.find((cabin: Cabin) => cabin.id === parseInt(urlCabinID));
         return Data;
     }
 
@@ -58,12 +58,12 @@ const Reservation = () => {
     }, []);
 
     useEffect(() => {
-        function dateSpace(dateStart:string, dateEnd:string) {
+        function dateSpace(dateStart: string, dateEnd: string) {
             const space = differenceInDays(new Date(dateEnd), new Date(dateStart));
             setDaysNumber(space)
-            if(data) {
-            const totalPrice = space * data.price_per_night
-            setTotal(totalPrice)
+            if (data) {
+                const totalPrice = space * data.price_per_night
+                setTotal(totalPrice)
             }
 
         }
@@ -83,7 +83,7 @@ const Reservation = () => {
 
 
 
-    const handleChangedDateStart = (e:any) => {
+    const handleChangedDateStart = (e: any) => {
         const dateStart = e.target.value;
         setNewDateStart(dateStart);
 
@@ -92,7 +92,7 @@ const Reservation = () => {
         setIsDateStartChanged(dateStartChanged);
     }
 
-    const handleChangedDateEnd = (e:any) => {
+    const handleChangedDateEnd = (e: any) => {
         const dateEnd = e.target.value;
         setNewDateEnd(dateEnd);
 
@@ -101,7 +101,7 @@ const Reservation = () => {
         setIsDateEndChanged(dateEndChanged);
     }
 
-    const handlePersNumber = (e:any) => {
+    const handlePersNumber = (e: any) => {
         const nPers = e.target.value;
         setPersNumber(nPers);
 
@@ -110,12 +110,12 @@ const Reservation = () => {
     async function handleSubmit() {
         if (persNumber === 0) {
             setIsDisabled(true)
-        } else if(data) {
+        } else if (data) {
             const reservationsData = {
                 bookings: [
                     ...data.bookings,
                     {
-                        booker_id: user? user.id:0,
+                        booker_id: user ? user.id : 0,
                         start_date: `${isDateStartChanged ? newDateStart : urlDateStart}`,
                         end_date: `${isDateEndChanged ? newDateEnd : urlDateEnd}`,
                         guests: persNumber
@@ -124,9 +124,9 @@ const Reservation = () => {
             }
             localStorage.setItem('myData', JSON.stringify({
                 ...JSON.parse(localStorage.getItem('myData') || '{}'),
-                cabins: JSON.parse(localStorage.getItem('myData') || '{}').cabins.map((cabin:Cabin) => cabin.id === data.id ? { ...cabin, bookings: reservationsData.bookings } : cabin)
+                cabins: JSON.parse(localStorage.getItem('myData') || '{}').cabins.map((cabin: Cabin) => cabin.id === data.id ? { ...cabin, bookings: reservationsData.bookings } : cabin)
             }));
-            const userReservation = user &&{
+            const userReservation = user && {
                 current_bookings: [
                     ...user.current_bookings,
                     {
@@ -140,7 +140,7 @@ const Reservation = () => {
             }
             localStorage.setItem('myData', JSON.stringify({
                 ...JSON.parse(localStorage.getItem('myData') || '{}'),
-                users: JSON.parse(localStorage.getItem('myData') || '{}').users.map((user:UserInterface) => user.id === user.id ? { ...user, current_bookings: userReservation?.current_bookings } : user)
+                users: JSON.parse(localStorage.getItem('myData') || '{}').users.map((user: UserInterface) => user.id === user.id ? { ...user, current_bookings: userReservation?.current_bookings } : user)
             }));
             localStorage.setItem('currentUser', JSON.stringify({
                 ...user,
@@ -170,7 +170,7 @@ const Reservation = () => {
                             <h2 className="text-2xl font-bold pb-8">Détails et modes de paiement</h2>
                             <div>
                                 <h3 className="text-lg font-bold pb-5">Votre séjour</h3>
-                                <div className="flex items-start justify-between pb-5 pl-3 w-full">
+                                <div className="flex items-start justify-between pb-5 pl-3 max-[400px]:pl-0 w-full">
                                     <div className="flex max-[598px]:flex-col gap-4 w-full">
                                         <div className="flex flex-col w-full">
                                             <label htmlFor="dateStart" className="font-medium pb-1 text-darkGreen">Début du séjour</label>
@@ -188,24 +188,26 @@ const Reservation = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex items-start justify-between pb-5 pl-3 w-full">
+                                <div className="flex items-start justify-between pb-5 pl-3 max-[400px]:pl-0 w-full">
                                     <div className="flex flex-col w-full">
                                         <label htmlFor="person" className="font-medium pb-1 text-darkGreen">Voyageurs</label>
                                         <input type="number" name="person" id="person" min="1" max="4" placeholder="4 pers. max" value={persNumber} className="rounded-lg border border-midGreen focus:font-semibold focus:border focus:border-darkGreen focus:ring-0 focus:placeholder:text-darkGreen" onChange={handlePersNumber} />
                                     </div>
                                 </div>
+                                <div className="pl-3 max-[400px]:pl-0">
+                                    {isDisabled && <p className="text-red-500">Veuillez remplir tous les champs ci-dessus.</p>}
+                                    <button type="button" className="bg-midGreen h-fit py-1 px-6 rounded-lg text-white hover:bg-darkGreen mt-8  max-[450px]:w-full" onClick={handleSubmit}>Payer</button>
+                                </div>
                             </div>
                             <div>
-                                {isDisabled && <p className="text-red-500">Veuillez remplir tous les champs ci-dessus.</p>}
                             </div>
-                            <button type="button" className="bg-midGreen h-fit py-1 px-6 rounded-lg text-white hover:bg-darkGreen mt-14" onClick={handleSubmit}>Payer</button>
 
 
                         </form>
-                        { data &&<section className="w-full min-[1350px]:w-[40%] h-fit bg-white border-2 border-midGreen rounded-2xl shadow-lg shadow-darkGreen/50 p-5">
-                            <div className="flex mb-7">
-                                <img src={data && data.images && `${process.env.PUBLIC_URL}${data.images[0]}`} alt="" className="h-28 rounded-lg" />
-                                <div className="pl-3">
+                        {data && <section className="w-full min-[1350px]:w-[40%] h-fit bg-white border-2 border-midGreen rounded-2xl shadow-lg shadow-darkGreen/50 p-5">
+                            <div className="flex max-[400px]:flex-col mb-7">
+                                <img src={data && data.images && `${process.env.PUBLIC_URL}${data.images[0]}`} alt="" className="h-28 max-[400px]:h-40 rounded-lg" />
+                                <div className="pl-3 max-[400px]:pl-0 max-[400px]:mt-2">
                                     <h3 className="text-lg font-bold">{data.name}</h3>
                                     <p>{data.region}</p>
                                     <p>{data.commune}</p>
@@ -232,9 +234,9 @@ const Reservation = () => {
                         </section>}
                     </div>
                 </main> : <div className="">
-                {data && user &&<Reserved data={data} user={user} reservation={reservationsInfos} />}
+                    {data && user && <Reserved data={data} user={user} reservation={reservationsInfos} />}
                 </div>
-                }
+            }
         </div>
     )
 }

@@ -51,9 +51,9 @@ export default function Header({toggleResponsiveNav, setToggleResponsiveNav}:Hea
 
     return (
         <>
-            <header className="z-1 h-20 flex flex-row justify-between items-center bg-white px-10 border-b-2 border-beige absolu">
+            <header className="z-1 h-20 flex flex-row justify-between items-center bg-white px-10 max-[900px]:px-4 border-b-2 border-beige absolu">
                 <div className="h-4/5 w-auto cursor-pointer" onClick={()=>navigate("/")}>
-                    <img src={logo} alt="logo" style={{ width: "100px" }} className="h-full w-auto text-slate-100" />
+                    <img src={logo} alt="logo" style={{ width: "100px" }} className="h-full text-slate-100" />
                 </div>
                 <div className="flex items-center gap-6">
                     {isLargeScreen ? <>

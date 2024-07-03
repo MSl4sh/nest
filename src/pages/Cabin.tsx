@@ -5,7 +5,7 @@ import AuthContext from "../contexts/AuthContext";
 // import Carroussel from '../components/Carroussel';
 // import CommentForm from '../components/CommentForm';
 // import LikeButton from '../components/LikeButton';
-import { set } from 'date-fns';
+import { format, set } from 'date-fns';
 import { Cabin } from '../shared/interfaces/cabinInterface';
 import useMediaWidth from '../shared/utils/useMediaWidth';
 import CabinComment from '../components/CabinComment/CabinComment';
@@ -138,7 +138,7 @@ const CabinPage = () => {
                             </div>
                             <p className='font-light mb-4 max-[792px]:text-sm'>{data.region}, {data.commune}</p>
                             <p className='max-[792px]:text-sm'>{data.description}</p>
-                            {!isLargeScreen && < NavLink to={`/reservation?id=${id}&dateStart=${dateStart}&dateEnd=${dateEnd}`}><button type='button' className='bg-midGreen mt-6 w-fit h-fit py-2 px-8 rounded-lg text-white border border-midGreen  hover:bg-darkGreen duration-75'>Réserver</button></ NavLink>}
+                            {!isLargeScreen && < NavLink to={`/reservation?id=${id}&dateStart=${format(new Date(),"dd-MM,yy")}&dateEnd=${format(new Date(),"dd-MM,yy")}`}><button type='button' className='bg-midGreen mt-6 w-fit h-fit py-2 px-8 rounded-lg text-white border border-midGreen  hover:bg-darkGreen duration-75'>Réserver</button></ NavLink>}
                             <div className='mt-24 pb-24'>
                                 <h1 className='text-2xl font-bold mb-4'>Commentaires</h1>
 
