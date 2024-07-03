@@ -21,7 +21,7 @@ function App() {
   const [user, setUser] = useState<UserInterface | null>(null);
   const [toggleResponsiveNav, setToggleResponsiveNav] = useState<boolean>(false)
   const isLargeScreen = useMediaWidth(900);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
 
 
@@ -79,10 +79,8 @@ function App() {
           <Route path="/a-propos" element={<About />} />
           <Route path="/compte" element={<Account />} />
           <Route path="/reservation" element={<Reservation />} />
-          {/* <Route path="/*" element={<NotFound />} /> */}
         </Routes>
       </BrowserRouter>
-      {/* <Footer /> */}
     </AuthContext.Provider>
   );
 }

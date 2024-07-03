@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom';
 
 const About: React.FC = () => {
     return (
-        <div className='bg-cover h-[95vh] bg-center home-background flex items-center p-4 '>
-            <div className="max-w-4xl mx-auto p-8 bg-white/80 rounded-lg  border-2 border-lightGreen shadow-lg shadow-darkGreen/50">
+        <div className='bg-cover bg-center home-background flex items-center p-4 '>
+            <div className="max-w-4xl mx-auto p-8 bg-white/80 rounded-lg h-80% border-2 border-lightGreen shadow-lg shadow-darkGreen/50">
                 <h1 className="text-3xl font-bold mb-6 border-b-2 border-beige pb-3">À <span className='text-midGreen'>propos</span></h1>
 
                 <p className="text-lg mb-4">
