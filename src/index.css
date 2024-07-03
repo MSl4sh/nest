@@ -273,3 +273,9 @@ h1>span {
   transform: rotate(180deg);
 }
 
+@media screen and (max-width: 1100px) {
+  .date{
+    width:100% !important;
+  }
+  
+}
