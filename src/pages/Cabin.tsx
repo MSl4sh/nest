@@ -138,7 +138,8 @@ const CabinPage = () => {
                             </div>
                             <p className='font-light mb-4 max-[792px]:text-sm'>{data.region}, {data.commune}</p>
                             <p className='max-[792px]:text-sm'>{data.description}</p>
-                            {!isLargeScreen && < NavLink to={`/reservation?id=${id}&dateStart=${format(new Date(),"dd-MM,yy")}&dateEnd=${format(new Date(),"dd-MM,yy")}`}><button type='button' className='bg-midGreen mt-6 w-fit h-fit py-2 px-8 rounded-lg text-white border border-midGreen  hover:bg-darkGreen duration-75'>Réserver</button></ NavLink>}
+                            <p className='text-red-500 mt-4'>{error}</p>
+                            {!isLargeScreen && <div>{user?< NavLink to={`/reservation?id=${id}&dateStart=${format(new Date(),"dd-MM,yy")}&dateEnd=${format(new Date(),"dd-MM,yy")}`}><button type='button' className='bg-midGreen mt-6 w-fit h-fit py-2 px-8 rounded-lg text-white border border-midGreen  hover:bg-darkGreen duration-75'>Réserver</button></ NavLink>:<button type='button' className='bg-midGreen mt-6 w-fit h-fit py-2 px-8 rounded-lg text-white border border-midGreen  hover:bg-darkGreen duration-75' onClick={handleLoggedError}>Réserver</button>} </div>}
                             <div className='mt-24 pb-24'>
                                 <h1 className='text-2xl font-bold mb-4'>Commentaires</h1>
 

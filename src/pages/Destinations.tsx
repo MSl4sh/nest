@@ -150,19 +150,19 @@ const Destinations = () => {
 
     return (
         <div className=' flex justify-center bg-backgroundColor bg-cover bg-center min-h-screen pt-24 pb-24 ' >
-            <div className='px-32 max-[1560px]:px-12 f-full flex flex-col'>
+            <div className='px-32 max-[1560px]:px-12 max-[800px]:px-6 f-full flex flex-col'>
                 <h1 className='text-2xl mb-8 font-bold  md:text-4xl'>Choisissez votre <span className='text-midGreen'> destination</span></h1>
-                {isLargeScreen &&
-                    <form className='flex mb-4   items-center justify-between  rounded-2xl  w-full  py-3 border-2 border-midGreen px-3'>
-                        <div className="relative flex items-center gap-2 w-[20%]">
-                            <button type="button" name="where" id="where" className="w-full rounded-lg border border-midGreen bg-white py-2 px-3 text-[#757575] flex justify-between focus:text-darkGreen focus:font-medium" onClick={toggleSelected}><span>{activeFilter === "" ? "Choissisez une région" : `${activeFilter}`}</span>
+                    <form className='flex mb-4   items-center justify-between  rounded-2xl  w-full  py-3 border-2 border-midGreen px-3 max-[1000px]:flex-col max-[1000px]:gap-4'>
+                
+                        <div className="relative flex items-center gap-2 w-[20%] max-[1300px]:w-[45%] max-[1000px]:w-[100%]">
+                            <button type="button" name="where" id="where" className="w-full rounded-lg border border-midGreen bg-white py-2 px-3 text-[#757575] flex justify-between focus:text-darkGreen focus:font-medium overflow-hidden" onClick={toggleSelected}><span>{activeFilter === "" ? "Choissisez une région" : `${activeFilter}`}</span>
                                 {!isSelectedToggle ?
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M480 711 240 471l43-43 197 198 197-197 43 43-240 239Z" /></svg> :
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24" className="rotate-180"><path d="M480 711 240 471l43-43 197 198 197-197 43 43-240 239Z" /></svg>
                                 }
                             </button>
                             {isSelectedToggle &&
-                                <div className="absolute top-[50px] right-0 bg-white w-full rounded-lg py-1 px-2 border border-midGreen">
+                                <div className="z-50 absolute top-[50px] right-0 bg-white w-full rounded-lg py-1 px-2 border border-midGreen">
                                     <button type="button" value="Toutes les régions" className="w-full text-left my-1 py-1 px-2 hover:bg-midGreen hover:rounded-lg hover:text-white border-b border-midGreen/50" onClick={(e) => handleChange(e)}>Toutes les régions</button>
                                     <button type="button" value="Région wallonne" className="w-full text-left my-1 py-1 px-2 hover:bg-midGreen hover:rounded-lg hover:text-white border-b border-midGreen/50" onClick={(e) => handleChange(e)}>Région Wallonne</button>
                                     <button type="button" value="Région flamande" className="w-full text-left my-1 py-1 px-2 hover:bg-midGreen hover:rounded-lg hover:text-white border-b border-midGreen/50" onClick={(e) => handleChange(e)}>Région Flamande</button>
@@ -170,6 +170,7 @@ const Destinations = () => {
                                 </div>
                             }
                         </div>
+                        {isLargeScreen&& <>
                         <div className='flex items-center gap-2 '>
                             <label htmlFor="price">Prix</label>
                             <input type="range" className="slider" min="50" max="150" step={10} onChange={(e) => priceFilter(e.target.value)} />
@@ -178,17 +179,18 @@ const Destinations = () => {
                         <div className='flex items-center gap-2 w-1/4'>
                             <p>Voyageurs</p>
                             <input type="number" placeholder='0' className="rounded-lg  border border-midGreen focus:border focus:border-darkGreen focus:ring-0 focus:placeholder:text-darkGreen" />
-                        </div>
-                        <div className="relative flex items-center gap-2">
-                            <p>Ordre</p>
-                            <button type="button" name="where" id="order" className="w-[200px] rounded-lg border border-midGreen bg-white py-2 px-3 text-[#757575] flex justify-between focus:text-darkGreen focus:font-medium" onClick={() => setIsOrderToggle(!isOrderToggle)}><span>{order === "" ? "Ordre" : `${order}`}</span>
+                        </div></>}
+                        
+                        <div className="relative w-[20%] flex items-center gap-2 max-[1300px]:w-[50%] max-[1000px]:w-[100%]" >
+                            <p className='max-[1000px]:hidden'>Ordre</p>
+                            <button type="button" name="where" id="order" className="w-[100%]   rounded-lg border border-midGreen bg-white py-2 px-3 text-[#757575] flex justify-between focus:text-darkGreen focus:font-medium" onClick={() => setIsOrderToggle(!isOrderToggle)}><span>{order === "" ? "Ordre" : `${order}`}</span>
                                 {!isOrderToggle ?
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M480 711 240 471l43-43 197 198 197-197 43 43-240 239Z" /></svg> :
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24" className="rotate-180"><path d="M480 711 240 471l43-43 197 198 197-197 43 43-240 239Z" /></svg>
                                 }
                             </button>
                             {isOrderToggle &&
-                                <div className="absolute top-[50px] right-0 bg-white rounded-lg py-1 px-2 border border-midGreen">
+                                <div className="absolute top-[50px] w-full right-0 bg-white rounded-lg py-1 px-2 border border-midGreen">
                                     <button type="button" value="Croissant" className="w-full text-left my-1 py-1 px-2 hover:bg-midGreen hover:rounded-lg hover:text-white border-b border-midGreen/50" onClick={(e) => sortCabins(e)}>Croissant</button>
 
                                     <button type="button" value="Région de Bruxelles-Capitale" className="w-full text-left my-1 py-1 px-2 hover:bg-midGreen hover:rounded-lg hover:text-white" onClick={(e) => sortCabins(e)}>Décroissant</button>
@@ -196,7 +198,7 @@ const Destinations = () => {
                             }
                         </div>
                     </form>
-                }
+                
                 <h2 className='text-lg mb-3 md:text-xl'>Résultats ({filteredData?.length})</h2>
                 <div className='grid grid-cols-12 max-[750px]:grid-cols-4 max-[1300px]:grid-cols-8 gap-20 justify-center max-[900px]:gap-x-14 max-[1100px]:gap-x-12 '>
                     {filteredData && filteredData.length !== 0 ?

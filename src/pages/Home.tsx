@@ -54,11 +54,11 @@ export default function Home() {
                     </div>
                     <div className="flex flex-col max-[1278px]:w-[100%]">
                         <label htmlFor="dateStart" className="text-darkGreen pb-1 pl-1  ">Date de début</label>
-                        <DatePicker selected={startDate} onChange={(date:Date|null) => setStartDate(date!)} className="date rounded-lg border border-midGreen text-[#757575] max-[1278px]:w-full focus:font-semibold focus:border focus:border-darkGreen focus:ring-0 focus:text-darkGreen"/>
+                        <DatePicker selected={startDate} dateFormat="dd/MM/yyyy" onChange={(date:Date|null) => setStartDate(date!)} className="date rounded-lg border border-midGreen text-[#757575] max-[1278px]:w-full focus:font-semibold focus:border focus:border-darkGreen focus:ring-0 focus:text-darkGreen"/>
                                             </div>
                     <div className="flex flex-col max-[1278px]:w-[100%]">
                         <label htmlFor="dateEnd" className="text-darkGreen pb-1 pl-1 ">Date de fin</label>
-                        <DatePicker selected={endDate} onChange={(date:Date|null) => setEndDate(date!)} className="date rounded-lg border border-midGreen text-[#757575] max-[1278px]:w-full focus:font-semibold focus:border focus:border-darkGreen focus:ring-0 focus:text-darkGreen"/>
+                        <DatePicker selected={endDate} dateFormat="dd/MM/yyyy" minDate={startDate} onChange={(date:Date|null) => setEndDate(date!)} className="date rounded-lg border border-midGreen text-[#757575] max-[1278px]:w-full focus:font-semibold focus:border focus:border-darkGreen focus:ring-0 focus:text-darkGreen"/>
                     </div>
                     <div className="flex flex-col max-[1278px]:w-[100%]">
                         <label htmlFor="person" className="text-darkGreen pb-1 pl-1 ">Combien de personne ?</label>
