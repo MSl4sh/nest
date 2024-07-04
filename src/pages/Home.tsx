@@ -33,7 +33,7 @@ export default function Home() {
             <main className="flex flex-col items-center ">
                 <h1 className="text-4xl text-warp text-center w-[550px] font-semibold mb-9 max-[1200px]:text-3xl max-[700px]:w-[400px]">
                     Vivez une <span className="text-midGreen font-bold">expérience unique</span> en réservant votre cabane dans les arbres dès maintenant !</h1>
-                <form className="flex max-[1278px]:flex-col w-full  bg-white/75 p-7 gap-6 rounded-2xl border-2 border-midGreen  shadow-lg shadow-darkGreen/50">
+                <form className="flex max-[1278px]:flex-col w-full  bg-white/75 p-7 gap-6 rounded-2xl border-2 border-midGreen items-end shadow-lg shadow-darkGreen/50">
                     <div className="flex flex-col max-[1278px]:w-[100%]">
                         <label htmlFor="where" className="text-darkGreen pb-1 pl-1">Où ?</label>
                         <div className="relative">
@@ -64,7 +64,7 @@ export default function Home() {
                         <label htmlFor="person" className="text-darkGreen pb-1 pl-1 ">Combien de personne ?</label>
                         <input type="number" name="person" id="person" min="1" max="4" placeholder="4 pers. max" className="rounded-lg max-[1278px]:w-full  border border-midGreen focus:border focus:border-darkGreen focus:ring-0 focus:placeholder:text-darkGreen" onChange={handleGuests} />
                     </div>
-                    <div className="flex flex-col max-[1278px]:w-[100%] max-[1066px]:text-center">
+                    <div className="flex flex-col  max-[1278px]:w-[100%] max-[1066px]:text-center">
                         <NavLink to={`/destinations?location=${location}&maxGuests=${maxGuests}`} className="bg-midGreen h-fit py-2 px-3 rounded-lg text-white border border-midGreen hover:bg-darkGreen hover:border-darkGreen">Rechercher</NavLink>
                     </div>
                 </form>
